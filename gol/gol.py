@@ -33,7 +33,7 @@ each cell next generation:
 
 """
 if not nohat:
-    uh.brightness(.1)
+    uh.brightness(.5)
 
 def show_matrix(mat):
     for row in mat:
@@ -47,7 +47,7 @@ def show_matrix2(mat):
             else:
                 uh.set_pixel(x, y, 0, 0, 0)
     uh.show()
-    time.sleep(.075)
+    time.sleep(.1)
         
 
 def neighborhood(x,y, matrix):

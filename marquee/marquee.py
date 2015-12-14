@@ -8,7 +8,7 @@ from PIL import Image, ImageFont, ImageDraw
 import time
 import sys
 
-unicorn.brightness(.15)
+unicorn.brightness(.6)
 
 def marquee_text(text, bg_color="black", text_color="white", fontfile=r"PetMe128.ttf"):
     """
@@ -32,8 +32,8 @@ def marquee_text(text, bg_color="black", text_color="white", fontfile=r"PetMe128
                         unicorn.set_pixel(x, y, r, g, b)
                     except IndexError:
                         print x, y
-                    unicorn.show()
-                    time.sleep(.0001)
+            unicorn.show()
+            time.sleep(.04)
 
 if __name__ == "__main__":
     #command line argument text

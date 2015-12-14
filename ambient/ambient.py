@@ -24,4 +24,4 @@ def color_ambient(cval, flow = 50):
 
 
 if __name__ == "__main__":
-    color_ambient(130, flow=50)
+    color_ambient(180, flow=180)
