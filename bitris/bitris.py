@@ -62,7 +62,7 @@ g=[0,255,0]
 b=[0,0,255]
 y=[255,255,0]
 c = [0,255,255]
-colors = [r,g,b,y,c]
+colors = [r,g,b]#,y,c]
 gameover = 0
 
 class bitris(threading.Thread):
@@ -93,6 +93,8 @@ class bitris(threading.Thread):
                 self._sleepperiod -= 0.1
                 self.nextlevel += 10
             #self._stopevent.wait(self._sleepperiod)
+            if self.score > 10:
+                colors.append([255,255,0])
             self._stopevent.wait(0.01)
             if gameover:
                 self.end()
