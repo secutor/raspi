@@ -82,7 +82,7 @@ class bitris(threading.Thread):
                 self.find_gap()
                 if self.solvetriples():
                     self.draw()
-		    self.find_gap()
+                self.find_gap()
                 self.starttris()
                 self.activetris = 1
             self.drop()
@@ -90,7 +90,7 @@ class bitris(threading.Thread):
             self._stopevent.wait(self._sleepperiod)
             self._stopevent.wait(0.01)
             if gameover:
-		self.end()
+                self.end()
 
     def drop(self):
         """
@@ -218,7 +218,7 @@ class bitris(threading.Thread):
         global col1
         global col2
         global ori 
-	global gameover
+        global gameover
         col1 = colors[random.randint(0,len(colors)-1)]
         col2 = colors[random.randint(0,len(colors)-1)]
         if self.field[3][0] == [0,0,0] and self.field[4][0] == [0,0,0]:
@@ -229,7 +229,7 @@ class bitris(threading.Thread):
             self.activetris = 1
         else:
             gameover = 1
-	    
+        
     def movetris(self, press):
         if self.activetris:
             if press == 'a': #left
@@ -280,7 +280,7 @@ class bitris(threading.Thread):
                 uh.set_pixel(row, j, 255,0,0)
                 uh.show()
                 time.sleep(.001)
-	self._stopevent.set()
+        self._stopevent.set()
 
 thread1=bitris()
 thread1.daemon = 1
@@ -288,13 +288,13 @@ thread1.start()
 
 while 1:
     if gameover:
-	if thread1._stopevent.isSet():
+       if thread1._stopevent.isSet():
             thread1.join()
-        break
+            break
         
     if thread1.gameover==True:
         print "GAMEOVER"
-	    break
+        break
 
     user_input = readkey()
     if user_input=='a':
