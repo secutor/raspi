@@ -61,15 +61,17 @@ r=[255,0,0]
 g=[0,255,0]
 b=[0,0,255]
 y=[255,255,0]
-colors = [r,g,b,y]
+c = [0,255,255]
+colors = [r,g,b,y,c]
 gameover = 0
 
 class bitris(threading.Thread):
     def __init__(self):
         self.score = 0
         self.gameover = 0
+        self.nextlevel = 10
         self._stopevent = threading.Event()
-        self._sleepperiod = 0.25
+        self._sleepperiod = 0.5
         self.field = makefield()
         self.activetris = 0
         threading.Thread.__init__(self)
@@ -87,7 +89,10 @@ class bitris(threading.Thread):
                 self.activetris = 1
             self.drop()
             self.draw()
-            self._stopevent.wait(self._sleepperiod)
+            if self.score > self.nextlevel:
+                self._sleepperiod -= 0.1
+                self.nextlevel += 10
+            #self._stopevent.wait(self._sleepperiod)
             self._stopevent.wait(0.01)
             if gameover:
                 self.end()
